@@ -3,7 +3,7 @@
 resource "aws_route53_record" "apex" {
   zone_id = "${data.aws_route53_zone.zone.id}"
 
-  name = "${var.site_url}"
+  name = "${var.hosted_zone}"
   type = "A"
 
   alias {

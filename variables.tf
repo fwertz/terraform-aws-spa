@@ -2,7 +2,7 @@
 
 variable "site_url" {}
 variable "top_level_domain" {
-  default = "${site_url}"
+  default = ""
 }
 
 variable "force_destroy" {

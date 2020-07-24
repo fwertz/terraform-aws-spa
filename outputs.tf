@@ -1,4 +1,8 @@
 # spa/outputs.tf
+output "hosted_zone" {
+  value = var.top_level_domain != "" ? var.top_level_domain : var.site_url
+}
+
 output "origin_bucket_id" {
   value = "${aws_s3_bucket.origin.id}"
 }
