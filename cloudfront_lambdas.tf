@@ -5,7 +5,7 @@ resource "aws_lambda_function" "origin_request" {
   filename         = "${data.archive_file.origin_request.output_path}"
   source_code_hash = "${data.archive_file.origin_request.output_base64sha256}"
   role             = "${aws_iam_role.lambda_edge.arn}"
-  runtime          = "nodejs8.10"
+  runtime          = "nodejs10.x"
   handler          = "index.handler"
   memory_size      = 128
   timeout          = 3
@@ -17,7 +17,7 @@ resource "aws_lambda_function" "origin_response" {
   filename         = "${data.archive_file.origin_response.output_path}"
   source_code_hash = "${data.archive_file.origin_response.output_base64sha256}"
   role             = "${aws_iam_role.lambda_edge.arn}"
-  runtime          = "nodejs8.10"
+  runtime          = "nodejs10.x"
   handler          = "index.handler"
   memory_size      = 128
   timeout          = 3
@@ -29,7 +29,7 @@ resource "aws_lambda_function" "viewer_response" {
   filename         = "${data.archive_file.viewer_response.output_path}"
   source_code_hash = "${data.archive_file.viewer_response.output_base64sha256}"
   role             = "${aws_iam_role.lambda_edge.arn}"
-  runtime          = "nodejs8.10"
+  runtime          = "nodejs10.x"
   handler          = "index.handler"
   memory_size      = 128
   timeout          = 3
