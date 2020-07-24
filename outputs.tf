@@ -7,8 +7,8 @@ output "origin_bucket_arn" {
   value = "${aws_s3_bucket.origin.arn}"
 }
 
-output "origin_bucket_hosted_zone_id" {
-  value = "${aws_s3_bucket.origin.hosted_zone_id}"
+output "origin_bucket_site_url_id" {
+  value = "${aws_s3_bucket.origin.site_url_id}"
 }
 
 output "origin_bucket_regional_domain_name" {

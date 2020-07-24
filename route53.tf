@@ -3,12 +3,12 @@
 resource "aws_route53_record" "apex" {
   zone_id = "${data.aws_route53_zone.zone.id}"
 
-  name = "${var.hosted_zone}"
+  name = "${var.site_url}"
   type = "A"
 
   alias {
     name                   = "${aws_cloudfront_distribution.origin.domain_name}"
-    zone_id                = "${aws_cloudfront_distribution.origin.hosted_zone_id}"
+    zone_id                = "${aws_cloudfront_distribution.origin.site_url_id}"
     evaluate_target_health = true
   }
 
@@ -20,7 +20,7 @@ resource "aws_route53_record" "apex" {
 resource "aws_route53_record" "www" {
   zone_id = "${data.aws_route53_zone.zone.id}"
 
-  name    = "www.${var.hosted_zone}"
+  name    = "www.${var.site_url}"
   type    = "CNAME"
   ttl     = "300"
   records = ["${aws_cloudfront_distribution.origin.domain_name}"]

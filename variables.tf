@@ -1,6 +1,7 @@
 # spa/variables
 
-variable "hosted_zone" {}
+variable "site_url" {}
+variable "top_level_domain" {}
 
 variable "force_destroy" {
   default = false

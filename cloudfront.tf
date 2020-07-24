@@ -1,12 +1,12 @@
 # spa/cloudfront
 
 resource "aws_cloudfront_origin_access_identity" "origin" {
-  comment = "${local.hosted_zone_dash}-origin"
+  comment = "${local.site_url_dash}-origin"
 }
 
 resource "aws_cloudfront_distribution" "origin" {
-  aliases             = ["${var.hosted_zone}", "www.${var.hosted_zone}"]
-  comment             = "${local.hosted_zone_dash}-origin"
+  aliases             = ["${var.site_url}", "www.${var.site_url}"]
+  comment             = "${local.site_url_dash}-origin"
   default_root_object = "index.html"
   enabled             = true
   is_ipv6_enabled     = true

@@ -1,12 +1,12 @@
 # spa/acm
 
 data "aws_route53_zone" "zone" {
-  name = "${var.hosted_zone}."
+  name = "${var.top_level_domain}."
 }
 
 resource "aws_acm_certificate" "cert" {
-  domain_name               = "*.${var.hosted_zone}"
-  subject_alternative_names = ["${var.hosted_zone}"]
+  domain_name               = "*.${var.site_url}"
+  subject_alternative_names = ["${var.site_url}"]
   validation_method         = "DNS"
   tags                      = {}
 }

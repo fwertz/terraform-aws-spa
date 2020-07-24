@@ -1,7 +1,7 @@
 # spa/cloudfront_lambda
 
 resource "aws_lambda_function" "origin_request" {
-  function_name    = "${local.hosted_zone_dash}-origin-request"
+  function_name    = "${local.site_url_dash}-origin-request"
   filename         = "${data.archive_file.origin_request.output_path}"
   source_code_hash = "${data.archive_file.origin_request.output_base64sha256}"
   role             = "${aws_iam_role.lambda_edge.arn}"
@@ -13,7 +13,7 @@ resource "aws_lambda_function" "origin_request" {
 }
 
 resource "aws_lambda_function" "origin_response" {
-  function_name    = "${local.hosted_zone_dash}-origin-response"
+  function_name    = "${local.site_url_dash}-origin-response"
   filename         = "${data.archive_file.origin_response.output_path}"
   source_code_hash = "${data.archive_file.origin_response.output_base64sha256}"
   role             = "${aws_iam_role.lambda_edge.arn}"
@@ -25,7 +25,7 @@ resource "aws_lambda_function" "origin_response" {
 }
 
 resource "aws_lambda_function" "viewer_response" {
-  function_name    = "${local.hosted_zone_dash}-viewer-response"
+  function_name    = "${local.site_url_dash}-viewer-response"
   filename         = "${data.archive_file.viewer_response.output_path}"
   source_code_hash = "${data.archive_file.viewer_response.output_base64sha256}"
   role             = "${aws_iam_role.lambda_edge.arn}"
@@ -55,7 +55,7 @@ data "archive_file" "viewer_response" {
 }
 
 resource "aws_iam_role" "lambda_edge" {
-  name               = "${local.hosted_zone_dash}-lambda-edge-role"
+  name               = "${local.site_url_dash}-lambda-edge-role"
   assume_role_policy = "${data.aws_iam_policy_document.lambda_basic.json}"
 }
 

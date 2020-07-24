@@ -4,7 +4,7 @@ Create AWS infrastructure resources for Single Page Application.
 
 ## How to use
 
-1.  create a `infra/main.tf` in your project root directory. Replace the `aws.profile` and `spa.hosted_zone`. Do not change the `aws.region`, ACM certificate is required to be in `us-east-1`.
+1.  create a `infra/main.tf` in your project root directory. Replace the `aws.profile` and `spa.site_url`. Do not change the `aws.region`, ACM certificate is required to be in `us-east-1`.
 
     ```terraform
     # main.tf
@@ -15,9 +15,10 @@ Create AWS infrastructure resources for Single Page Application.
     }
 
     module "spa" {
-        source        = "github.com/louislarry/terraform-aws-spa"
-        hosted_zone   = "example.com"
-        force_destroy = true
+        source              = "github.com/louislarry/terraform-aws-spa"
+        site_url            = "[friends]?.example.com"
+        top_level_domain    = "example.com"
+        force_destroy       = true
     }
     ```
 
@@ -33,7 +34,7 @@ Create AWS infrastructure resources for Single Page Application.
 
 ## What does this do?
 
-If hosted_zone is `example_com`:
+If site_url is `example_com`:
 
 - Setup s3 originbucket `example-com-origin`
 - Setup s3 cloudformation log bucket `example-com-cloudfront-log`

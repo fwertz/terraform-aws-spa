@@ -5,7 +5,7 @@
 locals {
   region           = "us-east-1"
   s3_origin_id     = "myS3Origin"
-  hosted_zone_dash = "${replace(var.hosted_zone, ".", "-")}"
-  origin_bucket    = "${local.hosted_zone_dash}-origin"
-  log_bucket       = "${local.hosted_zone_dash}-cloudfront-log"
+  site_url_dash = "${replace(var.site_url, ".", "-")}"
+  origin_bucket    = "${local.site_url_dash}-origin"
+  log_bucket       = "${local.site_url_dash}-cloudfront-log"
 }
