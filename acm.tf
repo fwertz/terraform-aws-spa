@@ -1,7 +1,7 @@
 # spa/acm
 
 data "aws_route53_zone" "zone" {
-  name = "${var.top_level_domain}."
+  name = "${var.top_level_domain != "" ? var.top_level_domain : var.site_url}."
 }
 
 resource "aws_acm_certificate" "cert" {
