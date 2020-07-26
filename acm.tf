@@ -8,7 +8,9 @@ resource "aws_acm_certificate" "cert" {
   domain_name               = "*.${var.site_url}"
   subject_alternative_names = ["${var.site_url}"]
   validation_method         = "DNS"
-  tags                      = {}
+  tags = {
+    SEISAN_CLIENT = var.client_tag
+  }
 }
 
 resource "aws_route53_record" "cert_validation" {

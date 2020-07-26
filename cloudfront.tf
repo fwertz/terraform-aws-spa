@@ -71,4 +71,8 @@ resource "aws_cloudfront_distribution" "origin" {
 
     # minimum_protocol_version = "TLSv1.1_2016"
   }
+
+  tags = {
+    SEISAN_CLIENT = var.client_tag
+  }
 }

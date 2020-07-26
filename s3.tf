@@ -15,6 +15,10 @@ resource "aws_s3_bucket" "origin" {
     enabled = true
   }
 
+  tags = {
+    SEISAN_CLIENT = var.client_tag
+  }
+
   # acceleration_status = "Enabled"
 }
 
@@ -23,6 +27,10 @@ resource "aws_s3_bucket" "log" {
   bucket        = "${local.log_bucket}"
   acl           = "log-delivery-write"
   force_destroy = "${var.force_destroy}"
+
+  tags = {
+    SEISAN_CLIENT = var.client_tag
+  }
 }
 
 resource "aws_s3_bucket_policy" "origin" {
